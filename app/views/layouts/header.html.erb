@@ -1,5 +1,9 @@
-<div class="header alignright">
-	<div class="container">
+<div class="header">
+	<div class="header_container">
+		<div class="logo">
+			<%= link_to image_tag("logo.png"), root_path %>
+		</div>
+		<span class="alignright">
 	<% if current_user %>
 		Logged in as <b><%= current_user.name %></b>
 			<%=  image_tag current_user.picture %><br>
@@ -7,5 +11,6 @@
 		<% else %>
 			Sign in with <%= link_to image_tag('youtube.png'), "/auth/youtube" %>
 		<% end %>
+		</span>
 		</div>
 	</div>

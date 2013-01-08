@@ -1,25 +1,26 @@
 
-.container, .logo {
+.container {
 	width:940px;
 	padding: 20px;
-	margin: 20px auto 0 auto;
+	margin: 0 auto 0 auto;
 	
 }
 
-.logo img {
-	display:block;
-	width:500px;
-	margin-left: auto;
-	margin-right: auto;
+.logo {
+	display:inline-block;
+	width:100px;
 }
 
 .alignright {
-	text-align: right;
+	position:absolute;
+	top:25%;
+	right:0%;
+	height: auto;
 }
 /* ------------------------- Header --------------------------------------------*/
 
 .header {
-	padding: 30px;
+	padding: 25px;
 	width: 100%;
 	margin-bottom: 10px;
 	font-size: 18px;
@@ -27,6 +28,12 @@
 	line-height: 30px;
 	color: inherit;
 	background-color: #EEE;
+}
+
+.header_container {
+	position:relative;
+	width: 940px;
+	margin: 0 auto 0 auto;
 }
 
 /* ------------------------- Footer --------------------------------------------*/
@@ -37,3 +44,6 @@
 	margin-bottom: 0px!important;
 	line-height: 0px;
 }
+
+/*---------------------------- buttons -------------------------------------------*/
+
