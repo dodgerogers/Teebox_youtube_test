@@ -1,0 +1,16 @@
+<%= form_for(@user) do |f| %>
+	<%= f.label :name %>
+	<%= f.text_field :name %><br>
+	
+	<%= f.label :age %>
+	<%= f.select :age, ['13-18', '19-25', '26-35', '36-45', '45-55', '60+'] %><br>
+	
+	<%= f.label :gender %>
+	<%= f.select :gender, ["male", "female"] %><br>
+	
+	<%= f.label :country %>
+	<%= f.select :country, countries %><br>
+	
+	<%= f.submit "Save", class: "btn btn-info" %>
+	
+	<% end %>

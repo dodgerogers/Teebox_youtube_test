@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
   
+  attr_accessible :age, :gender, :country, :picture, :name
+  
+  validates_presence_of :name, :email, :provider, :oauth_token
   
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
@@ -11,6 +14,6 @@ class User < ActiveRecord::Base
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.picture = auth.info.image
       user.save!
-      end
+      redirect_to edit_user_path(self) if user.new_record? end
     end
 end

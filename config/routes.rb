@@ -4,6 +4,7 @@ Teebox::Application.routes.draw do
   match 'signout', to: 'sessions#destroy', as: 'signout'
   match 'youtube', to: 'static_pages#youtube'
   match 'auth/failure', to: 'static_pages#youtube'
+  
   resources :users
   
   root to: "static_pages#home"

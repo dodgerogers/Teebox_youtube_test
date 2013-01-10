@@ -21,6 +21,9 @@ ActiveRecord::Schema.define(:version => 20130107125814) do
     t.string   "oauth_token"
     t.string   "picture"
     t.datetime "oauth_expires_at"
+    t.string   "gender"
+    t.string   "country"
+    t.string   "age"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end

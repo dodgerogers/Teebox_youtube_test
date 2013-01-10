@@ -3,14 +3,17 @@
 		<div class="logo">
 			<%= link_to image_tag("logo.png"), root_path %>
 		</div>
-		<span class="alignright">
 	<% if current_user %>
-		Logged in as <b><%= current_user.name %></b>
-			<%=  image_tag current_user.picture %><br>
-			<%= link_to "Sign out", signout_path %>
+	<span class="alignright">
+	<%=  image_tag current_user.picture, class: "profile_pic" %>
+		<%= link_to current_user.name.capitalize, current_user %></br>
+			<%= link_to "Sign out", signout_path %><br>
+			<%= link_to raw('<i class="icon-wrench"></i>'), edit_user_path(current_user) %>
+			</span>
 		<% else %>
+		<span class="signin">
 			Sign in with <%= link_to image_tag('youtube.png'), "/auth/youtube" %>
+			</span>
 		<% end %>
-		</span>
 		</div>
 	</div>

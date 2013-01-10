@@ -1,0 +1,10 @@
+<legend>My Profile</legend>
+	<%= image_tag(@user.picture) %><br><br>
+	Username: <%= @user.name %><br>
+	Email <%= @user.email %><br>
+	
+	Gender <%= @user.gender %><br>
+	Age <%= @user.age %><br>
+	Country <%- @user.country %><br>
+	
+	<%= link_to "Edit Profile", edit_user_path(@user) %>
