@@ -10,9 +10,9 @@ class CreateUsers < ActiveRecord::Migration
       t.datetime :oauth_expires_at
       t.string :gender
       t.string :country
-      t.string :age
 
       t.timestamps
     end
+    add_index :users, [:name, :id, :email]
   end
 end

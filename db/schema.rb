@@ -23,9 +23,10 @@ ActiveRecord::Schema.define(:version => 20130107125814) do
     t.datetime "oauth_expires_at"
     t.string   "gender"
     t.string   "country"
-    t.string   "age"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end
+
+  add_index "users", ["name", "id", "email"], :name => "index_users_on_name_and_id_and_email"
 
 end
