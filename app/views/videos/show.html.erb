@@ -1,6 +1,5 @@
-
       
-        <%= raw yt_client.my_video(@video.yt_video_id).embed_html %><br>
+        <%=  raw html5_video(@video.yt_video_id) %><br>
         <%= @video.description %><br>
         url:<a href="http://www.youtube.com/watch?v=<%= @video.yt_video_id %>&feature=youtube_it" target="_blank">http://www.youtube.com/watch?v=<%= @video.yt_video_id %></a><br>
 
