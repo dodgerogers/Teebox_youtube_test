@@ -1,0 +1,11 @@
+common: &common
+  dev_key: AI39si4ji1OEvDnGBBd9CbitQyCCE5pmr2_cLh5P6gtH8DAal4bvaM-o2o5LcyLcCHRt-Lkb7etycQp4VbtywO2ZorgbMQv05A
+  username:  andrewcmagics@gmail.com
+  password:  azonic12
+  
+test:
+  <<: *common
+development:
+  <<: *common
+production:
+  <<: *common

@@ -1,0 +1,9 @@
+
+All videos
+
+<% @videos.each do |vid| %>
+	<li><%= vid.title %>
+	<%= vid.description %>
+	<%= vid.yt_video_id %>
+	<%= vid.user_id %></li>
+	<% end %>

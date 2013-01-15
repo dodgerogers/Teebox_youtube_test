@@ -2,12 +2,18 @@ Teebox::Application.routes.draw do
   
   match 'auth/youtube/callback', to: 'sessions#create'
   match 'signout', to: 'sessions#destroy', as: 'signout'
-  match 'youtube', to: 'static_pages#youtube'
-  match 'auth/failure', to: 'static_pages#youtube'
+  match 'youtube', to: 'static#youtube'
+  match 'auth/failure', to: 'static#youtube'
   
   resources :users
+  resources :videos do
+    new do
+    post :upload
+    get :save_video
+  end
+end
   
-  root to: "static_pages#home"
+  root to: "static#home"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

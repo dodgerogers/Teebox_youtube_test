@@ -1,0 +1,9 @@
+<div class="well">
+	Upload your video
+	
+<%= form_tag @upload_info[:url], :multipart => true do |f| %>
+  <%= hidden_field_tag :token, @upload_info[:token] %>
+  <%= file_field_tag :file %><br><br>
+  <%= submit_tag "Upload video", class: "btn btn-info" %>
+<% end %>
+</div>

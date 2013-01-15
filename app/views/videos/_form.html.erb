@@ -1,0 +1,19 @@
+<div class="group">
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+</div>
+
+<div class="group">
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+</div>
+
+
+<% if @video.new_record?%>
+	<%= f.submit "Save", class: "btn btn-info" %>
+<%else%>
+	<%= f.submit "Save", class: "btn btn-info" %>
+<%end%>
+
+<%= link_to "Cancel", videos_path %>
+</div>

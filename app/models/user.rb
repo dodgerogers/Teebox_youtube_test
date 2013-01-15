@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
     
   attr_accessible :name, :country, :gender  
   validates_presence_of :name, :email, :provider, :oauth_token
+  has_many :videos, dependent: :destroy
   
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|

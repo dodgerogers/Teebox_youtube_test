@@ -25,6 +25,7 @@ gem 'omniauth-google-oauth2'
 gem "omniauth-youtube"
 gem 'jquery-rails'
 gem 'therubyracer'
+gem 'youtube_it'
 
 
 # To use ActiveModel has_secure_password

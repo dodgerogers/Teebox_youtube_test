@@ -1,0 +1,11 @@
+
+      
+        <%= raw yt_client.my_video(@video.yt_video_id).embed_html %><br>
+        <%= @video.description %><br>
+        url:<a href="http://www.youtube.com/watch?v=<%= @video.yt_video_id %>&feature=youtube_it" target="_blank">http://www.youtube.com/watch?v=<%= @video.yt_video_id %></a><br>
+
+ 
+        <%= link_to "Edit", :class => "btn btn-info" %> |
+        <%= link_to "delete", :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+    
+  

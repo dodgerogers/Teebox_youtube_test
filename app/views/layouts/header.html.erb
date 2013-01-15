@@ -10,7 +10,8 @@
 		</div>
 		<%= link_to current_user.name.capitalize, current_user %></br>
 			<%= link_to "Sign out", signout_path %><br>
-			<%= link_to raw('<i class="icon-cog"></i>'), edit_user_path(current_user) %>
+			<%= link_to raw('<i class="icon-cog"></i>'), edit_user_path(current_user) %><br>
+			<%= link_to "Upload a video", new_video_path %>
 			</span>
 		<% else %>
 		<span class="signin">
