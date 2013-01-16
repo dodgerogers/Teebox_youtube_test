@@ -1,6 +1,6 @@
 
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :youtube, YOUTUBE_KEY, YOUTUBE_SECRET, { access_type: 'online', approval_prompt: ''}
+  provider :youtube, YOUTUBE_KEY, YOUTUBE_SECRET, { :scope => "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://gdata.youtube.com", access_type: 'offline', approval_prompt: '' }
 end
 
 OmniAuth.config.on_failure do |env|
