@@ -18,7 +18,9 @@ class VideosController < ApplicationController
   
   def upload
     @video = Video.create(params[:video])
-    if @video
+    if @video.youtube_url
+      redirect_to @video
+    elsif @video
       @upload_info = Video.token_form(params[:video], save_video_new_video_url(:video_id => @video.id))
     else
       respond_to do |format|
@@ -38,7 +40,7 @@ class VideosController < ApplicationController
           redirect_to @video, :notice => "video successfully updated"
         else
           respond_to do |format|
-            format.html { render "/videos/_edit" }
+            format.html { render "/videos/edit" }
           end
         end
       end
@@ -62,7 +64,7 @@ class VideosController < ApplicationController
     else
       flash[:error] = "video unsuccessfully deleted"
     end
-    redirect_to videos_path
+    redirect_to :root
   end
 
   

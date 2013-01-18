@@ -1,9 +1,12 @@
-<legend>My Profile</legend>
+
+<div class="hero-unit">
 	<%= image_tag(@user.picture) %><br><br>
-	Username: <%= @user.name %><br>
-	Email <%= @user.email %><br>
+	<%= @user.name %><br>
+	<%= @user.email %><br>
 	
-	Gender <%= @user.gender %><br>
-	Country <%- @user.country %><br>
-	
+	<%= @user.gender %><br>
+	<%= @user.country %><br>
+	<div>
+		
+		<%= render partial: "videos/index", locals: { videos: @videos } %>
 	<%= link_to "Edit Profile", edit_user_path(@user) %>

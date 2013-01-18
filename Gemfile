@@ -20,7 +20,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'omniauth-openid'
+gem "oauth2"
 gem 'omniauth-google-oauth2'
 gem "omniauth-youtube"
 gem 'jquery-rails'

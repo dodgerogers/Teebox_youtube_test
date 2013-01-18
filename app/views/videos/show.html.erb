@@ -1,8 +1,10 @@
-      
+      <% if @video.youtube_url %>
+				<%= raw youtube_url_html5(@video.youtube_url) %><br>
+				<% else %>
         <%=  raw html5_video(@video.yt_video_id) %><br>
         <%= @video.description %><br>
         url:<a href="http://www.youtube.com/watch?v=<%= @video.yt_video_id %>&feature=youtube_it" target="_blank">http://www.youtube.com/watch?v=<%= @video.yt_video_id %></a><br>
-
+				<% end %>
  
         <%= link_to "Edit", :class => "btn btn-info" %> |
         <%= link_to "delete", :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>

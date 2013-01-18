@@ -178,6 +178,7 @@ DEPENDENCIES
   jquery-rails
   less-rails
   mysql2
+  oauth2
   omniauth-google-oauth2
   omniauth-openid
   omniauth-youtube

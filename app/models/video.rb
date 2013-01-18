@@ -1,6 +1,7 @@
 class Video < ActiveRecord::Base
   
-  attr_accessible :title, :description, :yt_video_id, :is_complete
+  attr_accessible :title, :description, :yt_video_id, :is_complete, :user_id, :youtube_url
+  belongs_to :user
   
   scope :completes,   where(:is_complete => true)
   scope :incompletes, where(:is_complete => false)
@@ -9,9 +10,14 @@ class Video < ActiveRecord::Base
   def self.yt_session
     @yt_session ||= YouTubeIt::Client.new(:username => YouTubeITConfig.username , :password => YouTubeITConfig.password , :dev_key => YouTubeITConfig.dev_key)    
   end
+  
+  def self.yt_oauth
+    @yt_ouath ||= YouTubeIt::OAuth2Client.new(client_access_token: self.user.auth_token, client_id: YOUTUBE_KEY, client_secret: YOUTUBE_SECRET, dev_key: DEV_KEY, expires_at: self.user.ouath_expires_at)
+  end
 
   def self.delete_video(video)
-    yt_session.video_delete(video.yt_video_id)
+      self.destroy
+    yt_oauth.video_delete(video.yt_video_id)
     video.destroy
       rescue
         video.destroy
@@ -34,8 +40,9 @@ class Video < ActiveRecord::Base
     def self.video_options(params)
       opts = {:title => params[:title],
              :description => params[:description],
-             :category => "People",
-             :keywords => ["test"]}
+             :category => "Sports",
+             :private => true,
+             :keywords => ["Teebox Uploads"]}
       params[:is_unpublished] == "1" ? opts.merge(:private => "true") : opts
     end
 end

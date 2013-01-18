@@ -1,0 +1,11 @@
+      
+            
+    <h2 class="title"><%= t("web-app-theme.edit", :default => "Edit") %> Video</h2>
+    <div class="inner">
+      <%= form_for @video, :url => video_path(@video), :html => { :class => :form } do |f| -%>
+        <%= render :partial => "form", :locals => {:f => f} %>
+      <% end -%>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,42 @@
+         
+  
+    <div class="inner">
+      <table class="table table-striped">
+        <tr>             
+          <th class="first"></th>
+					<th>Video URL</th>
+          <th>
+            <%= t("activerecord.attributes.video.title", :default => t("activerecord.labels.title", :default => "Title")) %>
+          </th>
+                    <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
+          <th class="last">&nbsp;</th>
+        </tr>
+        <% videos.each do |video| -%>
+        <tr class="<%= cycle("odd", "even") %>">
+          <td>
+            <%= link_to image_tag("http://img.youtube.com/vi/#{video.yt_video_id}/default.jpg"), video %>
+          </td>
+					<td><%= link_to "http://youtube.com/watch?v=#{video.yt_video_id}", "http://youtube.com/watch?v=#{video.yt_video_id}", target: "_blank" %></td>
+                    <td>
+            <%= link_to video.title, video_path(video) %>
+          </td>
+                    <td>
+            <%= video.created_at %>
+          </td>
+          <td class="last">
+            <%= link_to "#{t("web-app-theme.show", :default => "Show")}", video_path(video)  %> |
+            <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_video_path(video) unless video.youtube_url %> |
+            <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", video_path(video), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" unless video.youtube_url %>
+          </td>
+        </tr>          
+        <% end -%>
+      </table>
+      <div class="actions-bar wat-cf">
+        <div class="actions">
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
