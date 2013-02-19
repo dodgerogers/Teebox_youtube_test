@@ -33,7 +33,7 @@ class VideosController < ApplicationController
   end
 
   def update
-    @result    = Video.update_video(@video, params[:video])
+    @result = Video.update_video(@video, params[:video])
     respond_to do |format|
       format.html do
         if @result

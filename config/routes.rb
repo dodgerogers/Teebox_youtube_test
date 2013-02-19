@@ -5,7 +5,9 @@ Teebox::Application.routes.draw do
   match 'youtube', to: 'static#youtube'
   match 'auth/failure', to: 'static#youtube'
   
-  resources :users
+  root to: "questions#index"
+  
+  resources :users, :questions
   resources :videos do
     new do
     post :upload
@@ -13,7 +15,6 @@ Teebox::Application.routes.draw do
   end
 end
   
-  root to: "static#home"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
