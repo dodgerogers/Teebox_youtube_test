@@ -1,12 +1,11 @@
 
-<div class="hero-unit">
 	<%= image_tag(@user.picture) %><br><br>
 	<%= @user.name %><br>
 	<%= @user.email %><br>
 	
 	<%= @user.gender %><br>
 	<%= @user.country %><br>
-	<div>
+
+		<%= link_to "Edit Profile", edit_user_path(@user) %><br><br>
 		
 		<%= render partial: "videos/index", locals: { videos: @videos } %>
-	<%= link_to "Edit Profile", edit_user_path(@user) %>

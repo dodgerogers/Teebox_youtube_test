@@ -1,7 +1,13 @@
 class QuestionsController < ApplicationController
 
+  caches_page :index
+  
   def index
-    @questions = Question.all
+    if params[:tag]
+      @questions = Question.tagged_with(params[:tag]).includes(:user)
+    else  
+      @questions = Question.all
+    end
   end
 
   def new
@@ -15,9 +21,9 @@ class QuestionsController < ApplicationController
   def create
     @question = current_user.questions.build(params[:question])
     if @question.save 
-      redirect_to @question 
+      redirect_to @question, notice: "Question posted!" 
     else 
-      render :new 
+      render :new
     end
   end
   

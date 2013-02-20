@@ -1,6 +1,5 @@
          
-  
-    <div class="inner">
+ 
       <table class="table table-striped">
         <tr>             
           <th class="first"></th>
@@ -14,29 +13,37 @@
         <% videos.each do |video| -%>
         <tr class="<%= cycle("odd", "even") %>">
           <td>
-            <%= link_to image_tag("http://img.youtube.com/vi/#{video.yt_video_id}/default.jpg"), video %>
+						<% if video.yt_video_id %>
+            	<%= link_to image_tag("http://img.youtube.com/vi/#{video.yt_video_id}/default.jpg"), video %>
+						<% else %>
+							<%= link_to image_tag("http://img.youtube.com/vi/#{strip_url(video.youtube_url)}/default.jpg"), video %>
+						<% end %>
           </td>
-					<td><%= link_to "http://youtube.com/watch?v=#{video.yt_video_id}", "http://youtube.com/watch?v=#{video.yt_video_id}", target: "_blank" %></td>
-                    <td>
-            <%= link_to video.title, video_path(video) %>
+					<td>
+						<% if video.yt_video_id %>
+							<%= link_to "http://youtube.com/watch?v=#{video.yt_video_id}", "http://youtube.com/watch?v=#{video.yt_video_id}", target: "_blank" %>
+						<% else %>
+							<%= link_to video.youtube_url, video.youtube_url %>
+						<% end %>
+					</td>
+          <td>
+						<%= link_to video.title, video_path(video) %>
           </td>
                     <td>
             <%= video.created_at %>
           </td>
           <td class="last">
-            <%= link_to "#{t("web-app-theme.show", :default => "Show")}", video_path(video)  %> |
-            <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_video_path(video) unless video.youtube_url %> |
-            <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", video_path(video), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" unless video.youtube_url %>
+            <%= link_to "Show ", video_path(video)  %>
+            <%= link_to "| Edit", edit_video_path(video) unless video.youtube_url %> 
+            <%= link_to "| Delete", video_path(video), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" unless video.youtube_url %>
           </td>
         </tr>          
         <% end -%>
       </table>
       <div class="actions-bar wat-cf">
         <div class="actions">
-        </div>
-        
+        </div>   
       </div>
     </div>
-  </div>
-</div>
+ 
 

@@ -1,13 +1,19 @@
 
+
 	<div class="main">
-		<%= link_to "Ask a Question", new_question_path, class: "submit" %>
+		<%= link_to "Ask a Question", new_question_path, class: "btn pull-right" %>
+		<%= render partial: "shared/tagcloud", locals: { questions: @questions } %>
 	</div>
 	
 <% @questions.each do |question| %>
-	<h2><%= question.title %></h2><br>
-		<%= question.body %><br>
-		Asked by <%= question.user.name %>
-		on <%= time_ago_in_words(question.created_at) %> ago
+	<h2><%= link_to question.title, question %></h2>
+		
+		<%= strip_tags question.body %><br>
+		
+		<%= question_tags(question) %><br>
+		
+		<small>Asked by <%= link_to question.user.name, question.user %>
+		on <%= time_ago_in_words(question.created_at) %> ago</small>
 	<hr>
 	<% end %>
 	
